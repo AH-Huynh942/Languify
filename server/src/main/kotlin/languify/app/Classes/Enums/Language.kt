@@ -1,36 +1,42 @@
 package languify
 
-enum class Language {
+enum class Language(val apiCode: String) {
     //unique languages
-    KOREAN,
-    ARMENIAN,
-    GEORGIAN,
-    SINHALA,
-    HEBREW,
-    INUKTITUT,
-    CHEROKEE,
-    TAMIL,
-    KHMER,
+    KOREAN("ko"),
+    ARMENIAN("hy"),
+    GEORGIAN("ka"),
+    SINHALA("si"),
+    HEBREW("iw"),
+    INUKTITUT("iu"),
+    CHEROKEE("chr"),
+    TAMIL("ta"),
+    KHMER("km"),
 
     //latin languages
-    ENGLISH,
-    SPANISH,
-    FRENCH,
-    PORTUGUESE,
-    GERMAN,
-    VIETNAMESE,
-    TURKISH,
-    POLISH,
+    ENGLISH("en"),
+    SPANISH("es"),
+    FRENCH("fr"),
+    PORTUGUESE("pt"),
+    GERMAN("de"),
+    VIETNAMESE("vi"),
+    TURKISH("tr"),
+    POLISH("pl"),
 
     //arabic languages
-    ARABIC,
-    FARSI,
-    DARI,
-    URDU,
-    UYGHUR,
-    KURDISH,
-    PASHTO,
+    ARABIC("ar"),
+    PERSIAN("fa"),
+    URDU("ur"),
+    KURDISH("ku"),
+    PASHTO("ps"),
 
     // this will be passed when the expert has no idea
-    NONE
+    NONE("NA");
+
+    companion object {
+        fun toLanguage(name: String): Language? {
+            return entries.find { it.apiCode.equals(name) }
+        }
+    }
+
+
 }

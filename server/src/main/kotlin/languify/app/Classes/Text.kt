@@ -22,4 +22,7 @@ class Text{
         return isInRange
     }
 
+    fun getString():String{
+        return textString
+    }
 }
