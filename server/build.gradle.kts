@@ -39,5 +39,6 @@ dependencies {
     implementation(libs.ktor.server.netty)
     implementation(libs.logback.classic)
     implementation(libs.ktor.server.config.yaml)
+    implementation(libs.detectlanguage)
     testImplementation(libs.ktor.server.test.host)
 }

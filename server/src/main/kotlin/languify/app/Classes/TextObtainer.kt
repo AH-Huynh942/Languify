@@ -1,5 +1,3 @@
-<<<<<<< HEAD:server/src/main/kotlin/languify/app/Classes/TextObtainer.kts
-=======
 package languify
 
 class TextObtainer {
@@ -11,4 +9,3 @@ class TextObtainer {
     }
 
 }
->>>>>>> 62f1e638e5abea9a2d253f4c496875e5df738807:server/src/main/kotlin/languify/app/Classes/TextObtainer.kt

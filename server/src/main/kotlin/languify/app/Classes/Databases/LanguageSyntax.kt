@@ -1,6 +1,6 @@
 package languify
 
-import Text
+import languify.Text
 
 data class LanguageSyntax(
     val id: Int,
