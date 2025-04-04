@@ -7,56 +7,55 @@ import com.detectlanguage.DetectLanguage
 // English, French, Spanish, French, portugese, german, turkish, polish, vietnamese
 class LatinExpert: Expert {
     override fun guessLanguage(text: Text): Language {
-        try{
+        try {
             val apiKey = loadApiKey()
             DetectLanguage.apiKey = apiKey
-        }
-        catch(e: Exception){
+        } catch (e: Exception) {
             return Language.NONE
         }
         val result = DetectLanguage.simpleDetect(text.getString())
         val lang = Language.toLanguage(result)
 
-        try{
+        try {
             val resultNotNull: Language = lang!!
-        }
-        catch (npe: NullPointerException){
+            return checkLanguage(resultNotNull)
+        } catch (npe: NullPointerException) {
             return Language.NONE
         }
-        val resultNotNull: Language = lang!!
+    }
 
 
-        if (resultNotNull.equals(Language.ENGLISH)){
+    private fun checkLanguage(language: Language): Language{
+        if (language.equals(Language.ENGLISH)){
             return Language.ENGLISH
         }
-        else if (resultNotNull.equals(Language.SPANISH)){
+        else if (language.equals(Language.SPANISH)){
             return Language.SPANISH
         }
-        else if (resultNotNull.equals(Language.FRENCH)){
+        else if (language.equals(Language.FRENCH)){
             return Language.FRENCH
         }
-        else if (resultNotNull.equals(Language.PORTUGUESE)){
+        else if (language.equals(Language.PORTUGUESE)){
             return Language.PORTUGUESE
         }
-        else if (resultNotNull.equals(Language.GERMAN)){
+        else if (language.equals(Language.GERMAN)){
             return Language.GERMAN
         }
-        else if (resultNotNull.equals(Language.VIETNAMESE)){
+        else if (language.equals(Language.VIETNAMESE)){
             return Language.VIETNAMESE
         }
-        else if (resultNotNull.equals(Language.TURKISH)){
+        else if (language.equals(Language.TURKISH)){
             return Language.TURKISH
         }
-        else if (resultNotNull.equals(Language.POLISH)){
+        else if (language.equals(Language.POLISH)){
             return Language.POLISH
         }
         else{
             return Language.NONE
-
         }
     }
 
-    fun loadApiKey(): String? {
+    private fun loadApiKey(): String? {
         val properties = Properties()
         val file = File("local.properties")
         if (file.exists()) {
